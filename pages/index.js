@@ -1,4 +1,10 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import { PostCard, Categories, PostWidget } from '../components';
+
+const posts = [
+  { title: "NextJS Testing", excerpt: 'Learn NextJS testing' },
+  { title: "NextJS with tailwaind", excerpt: 'Learn NextJS with tailwaind' },
+];
 
 export default function Home() {
   return (
@@ -7,7 +13,17 @@ export default function Home() {
         <title>Sharjeel Yunus | Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Hello</h1>
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-12'>
+        <div className='lg:col-span-8 col-span-1'>
+          {posts.map((post, index) => <PostCard post={post} key={post.title} />)}
+        </div>
+        <div className='lg:col-span-4 col-span-1'>
+          <div className='lg:sticky relative top-8'>
+            <PostWidget />
+            <Categories />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
