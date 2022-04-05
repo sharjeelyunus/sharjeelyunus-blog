@@ -3,12 +3,12 @@ import { request, gql } from 'graphql-request';
 const qraphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
 export const getPosts = async () => {
-    const query = gql`
+  const query = gql`
     query MyQuery {
         postsConnection {
           edges {
             node {
-              auther {
+              author {
                 bio
                 name
                 id
@@ -33,7 +33,7 @@ export const getPosts = async () => {
       }
     `
 
-    const result = await request(qraphqlAPI, query);
+  const result = await request(qraphqlAPI, query);
 
-    return result.postsConnection.edges;
+  return result.postsConnection.edges;
 }
